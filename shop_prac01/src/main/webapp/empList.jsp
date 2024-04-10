@@ -5,8 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>empList</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript">
+  function deleteFn(empNo){
+	  location.href="/shop_prac01/empDelete.do?empNo="+empNo;
+  }
+</script>
 </head>
 <body>
 	<table class="table table-hover">
@@ -22,6 +27,7 @@
     <th>업데이트날짜</th>
     <th>생성날짜</th>
     <th>권한</th>
+    <th>삭제</th>
   </tr>
 </thead>
 <tbody>
@@ -37,6 +43,19 @@
     <td>${vo.updateDate}</td>
     <td>${vo.createDate}</td>
     <td>${vo.active}</td>
+    <c:if test="${vo.active eq 'ON'}">
+    	<td>
+    		<input type="radio" name="active" value="ON" checked="checked">ON
+    		<input type="radio" name="active" value="OFF">OFF
+    	</td>
+    </c:if>
+ 	<c:if test="${vo.active eq 'OFF'}">
+    	<td>
+    		<input type="radio" name="active" value="ON">ON
+    		<input type="radio" name="active" value="OFF" checked="checked">OFF
+    	</td>
+    </c:if>
+    <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.empNo})"></td>
   </tr>
 </c:forEach>
 </tbody>

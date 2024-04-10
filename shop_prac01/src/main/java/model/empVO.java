@@ -27,8 +27,7 @@ public class empVO {
 		this.active = active;
 	}
 
-	public empVO(String empId, String empPw, int grade, String empName, String empJob, String hireDate,
-			String updateDate, String createDate, String active) {
+	public empVO(String empId, String empPw, int grade, String empName, String empJob, String hireDate, String active) {
 		super();
 		this.empId = empId;
 		this.empPw = empPw;
@@ -36,8 +35,6 @@ public class empVO {
 		this.empName = empName;
 		this.empJob = empJob;
 		this.hireDate = hireDate;
-		this.updateDate = updateDate;
-		this.createDate = createDate;
 		this.active = active;
 	}
 
