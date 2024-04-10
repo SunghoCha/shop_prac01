@@ -42,22 +42,24 @@
     <td>${vo.hireDate}</td>
     <td>${vo.updateDate}</td>
     <td>${vo.createDate}</td>
-    <td>${vo.active}</td>
     <c:if test="${vo.active eq 'ON'}">
     	<td>
-    		<input type="radio" name="active" value="ON" checked="checked">ON
-    		<input type="radio" name="active" value="OFF">OFF
+    		<input type="radio" name="active + ${vo.empNo}" value="ON" checked="checked">ON
+    		<input type="radio" name="active + ${vo.empNo}" value="OFF">OFF
     	</td>
     </c:if>
  	<c:if test="${vo.active eq 'OFF'}">
     	<td>
-    		<input type="radio" name="active" value="ON">ON
-    		<input type="radio" name="active" value="OFF" checked="checked">OFF
+    		<input type="radio" name="active + ${vo.empNo}" value="ON">ON
+    		<input type="radio" name="active + ${vo.empNo}" value="OFF" checked="checked">OFF
     	</td>
     </c:if>
     <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.empNo})"></td>
   </tr>
 </c:forEach>
+  <tr>
+  	<td colspan="11" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='/shop_prac01/empForm.jsp'"/></td>
+  </tr>
 </tbody>
 </table>
 </body>

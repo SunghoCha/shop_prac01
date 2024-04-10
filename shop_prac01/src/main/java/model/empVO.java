@@ -38,6 +38,10 @@ public class empVO {
 		this.active = active;
 	}
 
+	public empVO() {
+		super();
+	}
+
 	public int getEmpNo() {
 		return empNo;
 	}

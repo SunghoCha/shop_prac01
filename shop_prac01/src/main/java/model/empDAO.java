@@ -105,4 +105,32 @@ public class empDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public empVO empLogin(empVO vo) {
+		getConnect();
+		String sql = "select emp_id, emp_name, grade from emp where emp_id = ? and emp_pw = ?";
+		empVO user = new empVO();
+		try {
+			System.out.println("[empDAO] empId : " + vo.getEmpId());
+			System.out.println("[empDAO] empPw : " + vo.getEmpPw());
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getEmpId());
+			psmt.setString(2, vo.getEmpPw());
+			System.out.println("[empDAO] empLogin query : " + psmt);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				System.out.println("[empDAO] empId 조회 성공");
+				user.setEmpId(rs.getString("emp_id"));
+				user.setEmpName(rs.getString("emp_name"));
+				user.setGrade(Integer.parseInt(rs.getString("grade")));
+			} else {
+				System.out.println("[empDAO] empId 조회 결과 없음");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return user;
+	}
 }
