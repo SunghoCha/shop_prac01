@@ -4,13 +4,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.DBHelper;
+
 public class empDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
 	
 	public List<empVO> getEmpList() {
-		getConnect();
+		conn = DBHelper.getConnect();
 		String sql = "select * from emp";
 		List<empVO> list = new ArrayList<empVO>();
 		
@@ -37,13 +39,13 @@ public class empDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			dbClose();
+			DBHelper.dbClose(conn, psmt, rs);
 		}
 		return list;
 	}
 	
 	public int addEmpOne(empVO vo) {
-		getConnect();
+		conn = DBHelper.getConnect();
 		String sql = "insert into emp (emp_id, emp_pw, grade, emp_name, emp_job, hire_date,"
 				+ " update_date, create_date, active) values (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)";
 		int cnt = -1;
@@ -61,13 +63,13 @@ public class empDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			dbClose();
+			DBHelper.dbClose(conn, psmt, rs);
 		}
 		return cnt;
 	}
 	
 	public int removeEmpOne(int empNo) {
-		getConnect();
+		conn = DBHelper.getConnect();
 		String sql = "delete from emp where emp_no = ?";
 		int cnt = -1;
 		try {
@@ -78,36 +80,12 @@ public class empDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			dbClose();
+			DBHelper.dbClose(conn, psmt, rs);
 		} return cnt;
-	}
-	
-	private void getConnect() {
-		String URL = "jdbc:mysql://localhost:3306/shop?characterEncoding=UTF-8&serverTimezone=UTC";
-		String user = "root";
-		String password = "1234";
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(URL, user, password);
-			System.out.println("[empDAO] DB 연결 성공");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void dbClose() {
-		try {
-			if (rs != null) {rs.close();}
-			if (psmt != null) {psmt.close();}
-			if (conn != null) {conn.close();}
-			System.out.println("[empDAO] DB 연결 해제");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public empVO empLogin(empVO vo) {
-		getConnect();
+		conn = DBHelper.getConnect();
 		String sql = "select emp_id, emp_name, grade from emp where emp_id = ? and emp_pw = ?";
 		empVO user = new empVO();
 		try {
@@ -129,8 +107,31 @@ public class empDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			dbClose();
+			DBHelper.dbClose(conn, psmt, rs);
 		}
 		return user;
+	}
+
+	public boolean checkEmpId(String empId) {
+		conn = DBHelper.getConnect();
+		String sql = "select emp_id from emp where emp_id = ?";
+		boolean isDuplicated = true;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,empId);
+			System.out.println("[empDAO] checkEmpId query : " + psmt);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				System.out.println("[empDAO] empId 중복");
+			} else {
+				System.out.println("[empDAO] empId 중복 아님");
+				isDuplicated = false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.dbClose(conn, psmt, rs);
+		}
+		return isDuplicated;
 	}
 }
