@@ -6,11 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/empRegisterController")
-public class empRegisterController extends HttpServlet {
+@WebServlet("/empLogout.do")
+public class EmpLogoutController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/empForm.jsp");
+		HttpSession session = request.getSession();
+		session.invalidate();
+		response.sendRedirect("/shop_prac01/empLoginForm.jsp");
 	}
-
 }

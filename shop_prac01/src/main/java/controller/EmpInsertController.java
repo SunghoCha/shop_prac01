@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.empDAO;
-import model.empVO;
+import model.EmpDAO;
+import model.EmpVO;
 
 @WebServlet("/empInsert.do")
-public class empInsertController extends HttpServlet {
+public class EmpInsertController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 파라미터 받기
 		request.setCharacterEncoding("utf-8");
@@ -31,8 +31,8 @@ public class empInsertController extends HttpServlet {
 		System.out.println("[empInsertController] request param hireDate : " + hireDate);
 		System.out.println("[empInsertController] request param active : " + active);
 		// dto 만들어서 db에 전달하고 결과 받기
-		empVO vo = new empVO(empId, empPw, grade, empName, empJob, hireDate, active);
-		empDAO dao = new empDAO();
+		EmpVO vo = new EmpVO(empId, empPw, grade, empName, empJob, hireDate, active);
+		EmpDAO dao = new EmpDAO();
 		int cnt = dao.addEmpOne(vo);
 		if (cnt > 0) {
 			System.out.println("[empInsertController] emp insert 성공");

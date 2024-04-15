@@ -1,12 +1,12 @@
 package model;
 
-public class productVO {
+public class ProductVO {
 	int productCode;
 	String productName;
 	int price;
 	int categoryNo;
 	
-	public productVO(int productCode, String productName, int price, int categoryNo) {
+	public ProductVO(int productCode, String productName, int price, int categoryNo) {
 		super();
 		this.productCode = productCode;
 		this.productName = productName;
@@ -14,14 +14,14 @@ public class productVO {
 		this.categoryNo = categoryNo;
 	}
 	
-	public productVO(String productName, int price, int categoryNo) {
+	public ProductVO(String productName, int price, int categoryNo) {
 		super();
 		this.productName = productName;
 		this.price = price;
 		this.categoryNo = categoryNo;
 	}
 
-	public productVO() {
+	public ProductVO() {
 		super();
 	}
 

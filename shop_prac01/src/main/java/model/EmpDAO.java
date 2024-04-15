@@ -6,15 +6,15 @@ import java.util.List;
 
 import util.DBHelper;
 
-public class empDAO {
+public class EmpDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
 	
-	public List<empVO> getEmpList() {
+	public List<EmpVO> getEmpList() {
 		conn = DBHelper.getConnect();
 		String sql = "select * from emp";
-		List<empVO> list = new ArrayList<empVO>();
+		List<EmpVO> list = new ArrayList<EmpVO>();
 		
 		try {
 		psmt = conn.prepareStatement(sql);
@@ -32,7 +32,7 @@ public class empDAO {
 				String createDate = rs.getString("create_date");
 				String active = rs.getString("active");
 				
-				empVO vo = new empVO(empNo, empId, empPw, grade, empName, empJob, 
+				EmpVO vo = new EmpVO(empNo, empId, empPw, grade, empName, empJob, 
 										hireDate, updateDate, createDate, active);
 				list.add(vo);
 			}
@@ -44,7 +44,7 @@ public class empDAO {
 		return list;
 	}
 	
-	public int addEmpOne(empVO vo) {
+	public int addEmpOne(EmpVO vo) {
 		conn = DBHelper.getConnect();
 		String sql = "insert into emp (emp_id, emp_pw, grade, emp_name, emp_job, hire_date,"
 				+ " update_date, create_date, active) values (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)";
@@ -84,10 +84,10 @@ public class empDAO {
 		} return cnt;
 	}
 
-	public empVO empLogin(empVO vo) {
+	public EmpVO empLogin(EmpVO vo) {
 		conn = DBHelper.getConnect();
 		String sql = "select emp_id, emp_name, grade from emp where emp_id = ? and emp_pw = ?";
-		empVO user = new empVO();
+		EmpVO user = new EmpVO();
 		try {
 			System.out.println("[empDAO] empId : " + vo.getEmpId());
 			System.out.println("[empDAO] empPw : " + vo.getEmpPw());

@@ -1,6 +1,6 @@
 package model;
 
-public class empVO {
+public class EmpVO {
 	int empNo;
 	String empId;
 	String empPw;
@@ -12,7 +12,7 @@ public class empVO {
 	String createDate;
 	String active;
 	
-	public empVO(int empNo, String empId, String empPw, int grade, String empName, String empJob, String hireDate,
+	public EmpVO(int empNo, String empId, String empPw, int grade, String empName, String empJob, String hireDate,
 			String updateDate, String createDate, String active) {
 		super();
 		this.empNo = empNo;
@@ -27,7 +27,7 @@ public class empVO {
 		this.active = active;
 	}
 
-	public empVO(String empId, String empPw, int grade, String empName, String empJob, String hireDate, String active) {
+	public EmpVO(String empId, String empPw, int grade, String empName, String empJob, String hireDate, String active) {
 		super();
 		this.empId = empId;
 		this.empPw = empPw;
@@ -38,7 +38,7 @@ public class empVO {
 		this.active = active;
 	}
 
-	public empVO() {
+	public EmpVO() {
 		super();
 	}
 

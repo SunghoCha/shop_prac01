@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.empDAO;
-import model.empVO;
+import model.EmpDAO;
+import model.EmpVO;
 
 @WebServlet("/empList.do")
-public class empListController extends HttpServlet {
+public class EmpListController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		empDAO dao = new empDAO();
-		List<empVO> empList = dao.getEmpList();
+		EmpDAO dao = new EmpDAO();
+		List<EmpVO> empList = dao.getEmpList();
 		request.setAttribute("empList", empList);
 		RequestDispatcher rd = request.getRequestDispatcher("empList.jsp");
 		rd.forward(request, response);

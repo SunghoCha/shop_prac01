@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.empDAO;
+import model.EmpDAO;
 
 @WebServlet("/empIdCheck.do")
-public class empIdCheckController extends HttpServlet {
+public class EmpIdCheckController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String empId = request.getParameter("empId");
 		System.out.println("[empIdCheckController] request-param empId : " + empId);
 		
-		empDAO dao = new empDAO();
+		EmpDAO dao = new EmpDAO();
 		boolean isDuplicated = dao.checkEmpId(empId);
 		response.getWriter().print(isDuplicated);
 	}

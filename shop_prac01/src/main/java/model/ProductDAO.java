@@ -6,12 +6,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class productDAO {
+public class ProductDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
 	
-	public int addProduct(productVO vo) {
+	public int addProduct(ProductVO vo) {
 		getConnect();
 		String sql = "insert into product (product_name, price, category_no) valeus (?, ?, ?)";
 		int cnt = -1;

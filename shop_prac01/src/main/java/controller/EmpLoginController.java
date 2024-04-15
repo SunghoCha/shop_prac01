@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.empDAO;
-import model.empVO;
+import model.EmpDAO;
+import model.EmpVO;
 
 @WebServlet("/empLogin.do")
-public class empLoginController extends HttpServlet {
+public class EmpLoginController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String empId = request.getParameter("empId");
 		String empPw = request.getParameter("empPw");
@@ -25,11 +25,11 @@ public class empLoginController extends HttpServlet {
 		System.out.println("[empLoginController] request-param empId : " + empId);
 		System.out.println("[empLoginController] request-param empPw : " + empPw);
 		
-		empVO vo = new empVO();
+		EmpVO vo = new EmpVO();
 		vo.setEmpId(empId);
 		vo.setEmpPw(empPw);
-		empDAO dao = new empDAO();
-		empVO user = dao.empLogin(vo);
+		EmpDAO dao = new EmpDAO();
+		EmpVO user = dao.empLogin(vo);
 		System.out.println("[empLoginController] userId : " + user.getEmpId());
 		if (user.getEmpId() != null && !user.getEmpId().equals("")) {
 			System.out.println("[empLoginController] 로그인 성공");
