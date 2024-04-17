@@ -34,7 +34,7 @@ public class FileAddController extends HttpServlet {
 		
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		try {
-			List<FileItem> items = upload.parseRequest(new ServletRequestContext(request)); // 수정된 부분: request를 전달하여 파일 업로드 요청 파싱하기
+			List<FileItem> items = upload.parseRequest(new ServletRequestContext(request)); 
             // 여기서부터 업로드된 파일 처리 코드 작성
             for (FileItem item : items) {
                 if (!item.isFormField()) {
