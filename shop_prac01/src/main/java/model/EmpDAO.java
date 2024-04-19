@@ -14,6 +14,7 @@ public class EmpDAO {
 	
 	public List<EmpVO> getEmpList() {
 		conn = DBHelper.getConnect();
+		
 		String sql = "select * from emp";
 		List<EmpVO> list = new ArrayList<EmpVO>();
 		
@@ -125,8 +126,6 @@ public class EmpDAO {
 		String sql = "select emp_id, emp_name, grade from emp where emp_id = ? and emp_pw = ?";
 		EmpVO user = new EmpVO();
 		try {
-			System.out.println("[empDAO] empId : " + vo.getEmpId());
-			System.out.println("[empDAO] empPw : " + vo.getEmpPw());
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getEmpId());
 			psmt.setString(2, vo.getEmpPw());
