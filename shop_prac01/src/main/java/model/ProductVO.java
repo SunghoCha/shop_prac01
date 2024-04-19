@@ -1,10 +1,10 @@
 package model;
 
 public class ProductVO {
-	int productCode;
-	String productName;
-	int price;
-	int categoryNo;
+	private int productCode;
+	private String productName;
+	private int price;
+	private int categoryNo;
 	
 	public ProductVO(int productCode, String productName, int price, int categoryNo) {
 		super();

@@ -1,16 +1,16 @@
 package model;
 
 public class EmpVO {
-	int empNo;
-	String empId;
-	String empPw;
-	int grade;
-	String empName;
-	String empJob;
-	String hireDate;
-	String updateDate;
-	String createDate;
-	String active;
+	private int empNo;
+	private String empId;
+	private String empPw;
+	private int grade;
+	private String empName;
+	private String empJob;
+	private String hireDate;
+	private String updateDate;
+	private String createDate;
+	private String active;
 	
 	public EmpVO(int empNo, String empId, String empPw, int grade, String empName, String empJob, String hireDate,
 			String updateDate, String createDate, String active) {
