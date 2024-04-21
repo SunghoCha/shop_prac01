@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* CSS RESET */
+html,body{padding:0; margin:0; width: 100%; height: 100%;}
+h1,h2,h3,h4,h5,h6,ul,p{font-size: 100%; line-height: 1; margin:0; padding:0; font-weight: normal;}
+li{list-style: none;}
+img{vertical-align: top;}
+.hidden {display: none;}
+/* LAYOUT */
+main{
+    padding: 0 0 60px 0;
+}
+main section{
+    padding: 60px 0;
+}
+
+/* COMMON ELEMENTS - TYPOGRAPHY*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #495662;
+    line-height: 1;
+    background: #f4f6f8;
+}
+.scale{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    
+
+    transform: scale(0.75); /* 전체적으로 75% 축소 */
+    transform-origin: center; /* 축소 기준점 설정 */
+}
+ a {
+    color: #495662;
+    text-decoration: none;
+}
+
+.content_title{
+    font-size: 36px;
+    font-weight: 800;
+    color: #34404b;
+    margin-bottom: 30px;
+}
+
+img {
+    width: 80%; /* 원하는 너비로 조절 */
+    height: auto; /* 높이를 자동으로 조절하여 비율 유지 */
+  }
+
+form hr{
+    border: none;
+    border-top: 1px solid #34404b;
+    margin: 30px 0;
+}
+/* COMMON ELEMENTS - LINK, BUTTON, IMAGE, TITLES, SHADOW*/
+/* .banner{   --> 크롬에서 이미지 사이즈 확대/축소하면 선명도가 떨어지는 문제 약간 보완하는 효과
+    image-rendering:-webkit-optimize-contrast;
+    transform:translateZ(0);
+    backface-visibility:hidden;
+  } */
+
+/* HEARDER */
+header{
+    position: relative;
+    z-index: 1;
+}
+header .top_navigation{
+    border-bottom: 1px solid #e6e8eb;
+    padding: 22px 0;
+    background: #fff;
+}
+.contact_list, .social_list{
+    display: flex;
+}
+.contact_list li{
+    margin-right: 20px;
+    display: flex;
+    font-size:13px;
+    line-height: 16px;
+}
+.contact_list a {
+    color: #495662;
+    text-decoration: none;
+}
+.social_list {
+    justify-content: end;
+}
+.social_list li{
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+.contact_list li span{
+    margin-right: 7px;
+}
+.social_list li a{
+    font-size: 15px;
+    line-height: 16px;
+}
+.shopping_nav {
+    justify-content: end;
+}
+
+.shopping_nav {
+    display: flex;
+}
+.shopping_nav li{
+    margin-left: 34px;
+    display: flex;
+    font-size:15px;
+    line-height: 48px;
+    align-items: center;
+}
+.shopping_nav li:last-child{
+    margin-top: 1px; 
+}
+.main_navigation{
+    padding: 41px;
+    background: #fff;
+    border-bottom: 1px solid #e6e8eb;
+}
+.gnb, .gnb ul {
+    display: flex;
+}
+.gnb ul li{
+    margin-right: 41px;
+}
+.gnb ul li a{
+    line-height: 48px;
+    color: #34404b;
+}
+.gnb ul li a:hover{
+    line-height: 48px;
+    color: #2492ED;
+}
+
+.logo {margin-right: 81px;}
+.logo a {
+    width:48px;
+    height: 48px;
+    background: url(../shop_img/favicon/android-icon-48x48.png) no-repeat;
+    text-indent: -9999em;
+    display: block;
+}
+.search_btn:hover {color: #2492ed}
+.mypage:hover {color: #2492ed}
+.cart:hover {color: #2492ed}
+.gift:hover {color: #2492ed} 
+.like:hover {color: #2492ed}  
+
+.cart {
+    position: relative;
+}
+.shopping_nav .cart::before {
+    content:attr(data-cart);
+    background: #34404b;
+    position: absolute;
+    left: 56%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius:50%;
+    bottom:calc(100% - 15px);
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+}
+
+header form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    background: #fff;
+    top: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+header form.active {
+    top: calc(100% + 1px)
+}
+header form input[type="text"]{
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #34404b;
+    width: 540px;
+    display: inline-block;
+    
+    outline: none;
+}
+header form input[type="text"]:focus{
+    border-bottom-color: #2492ED;
+}
+.submit {
+    display: inline-block;
+    vertical-align: bottom;
+    padding-left: 10px;
+}
+
+.main_slides li{
+    height: 650px;
+    background: no-repeat center top/cover;
+}
+.main_slides li.slide1{
+    background-image: url(../shop_img/bg/bg_annie-spratt.jpg);
+}
+.main_slides li .slide_contents{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.main_slides li .slide_contents .contents{
+    margin-left: 115px;
+}
+
+.main_slides li .slide_contents .contents h2{
+    font-size: 52px;
+    color: #2492ED;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+.main_slides li .slide_contents .contents h3{
+    font-size: 18px;
+    color: #3c4751;
+    font-weight: 600;
+    margin-bottom: 13px;
+}
+.main_slides li .slide_contents .contents p{
+    margin-bottom: 60px;
+}
+.price_order .price{
+    color: #34404b;
+    font-size: 18px;
+    margin-right: 30px;
+}
+.price_order .cart{
+    margin-right: 6px;
+    /* display: inline-block;  사용 이유 잘 몰라서 일단 주석처리*/
+}
+
+/* NEW ARRIVALS(오늘의 도서) */
+.new_arrivals_list .list_contents{
+    background: #fff;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    transition: box-shadow 0.5s;
+}
+.new_arrivals_list > li:hover .list_contents{
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+.new_arrivals_list .list_contents .default{
+    padding: 30px 30px 0;
+}
+.new_arrivals_list .list_contents .hover{
+    padding: 0 30px 0;
+}
+.new_arrivals_list .list_contents .default h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: #34404b;
+    padding-top: 15px;
+    margin: 28px 0 15px 0;
+}
+.new_arrivals_list .list_contents .hover h3{
+    font-size: 15px;
+    font-weight: 600;
+    color: #34404b;
+    padding-top: 10px;
+    margin: 28px 0 15px 0;
+}
+.new_arrivals_list .list_contents .default h4{
+    font-size: 15px;
+    font-weight: 600;
+    color: #34404b;
+}
+.new_arrivals_list .list_contents .hover p{
+    font-size: 13px;
+    font-weight: 450;
+    color: #34404b;
+    line-height: 1.2;
+}
+.new_arrivals_list .list_contents .hover hr{
+    width : 100%;
+    margin: 15px auto 15px;
+    border: none;
+    border-bottom: 1px solid #34404b;
+}
+.new_arrivals_list .list_contents .hover ul{
+    display: flex;
+    justify-content: center;
+}
+.new_arrivals_list .list_contents .hover ul li{
+   margin: 0 30px 15px;
+}
+.new_arrivals_list .list_contents .hover ul li a:hover{
+    color: #2492ED;
+ }
+ .new_arrivals_list > li{
+    height: 420px;
+    margin-bottom: 24px;
+ }
+ .new_arrivals_list > li .default img{
+    transition: width 0.5s;
+ }
+ .new_arrivals_list > li:hover .default img{
+    width : 40%;
+    height: auto;
+ }
+ .new_arrivals_list .list_contents .cart{
+    bottom: -9%;
+ }
+
+
+ /* detail.html */
+
+ /* product details */
+.product_info{
+    padding: 100px 0 135px;
+    background: #fff;
+}
+.product_pictures{
+    text-align: center;
+    padding: 0 50px 0;
+}
+.product_pictures .big_img{
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+.product_spec h2{
+    font-size: 42px;
+    color: #3c4751;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+.product_spec h3{
+    font-size: 18px;
+    color: #3c4751;
+    font-weight: 600;
+    margin-bottom: 13px;
+}
+.product_spec p{
+    margin-bottom: 60px;
+}
+.option h4{
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    color: #34404b;
+    margin-right: 20px;
+}
+/* .option .temp input{
+    display: none;
+} */
+.option .quantity{
+    padding-left: 25px;
+}
+.option .quantity input{
+    border: none;
+    width: 30px;
+    color: #2492ED;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+.price{
+    font-weight: 600;  
+    color: #34404b;
+}
+.order_now{
+    padding-right: 200px;
+} 
+.order_now li{
+    text-align: right;
+    margin: 0 15px;
+}
+.order_now button{
+    padding: 0 24px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    background: #34404b;
+    border-radius: 25px;
+    border: none;
+}   
+.order_now button:hover{
+
+    background: #2492ED;
+
+} 
+.order_summary{
+    align-items: center;
+}
+
+/* products.html */
+.category_menu{
+    background: #fff;
+    padding: 30px 40px;
+    display: flex;
+}
+.category_menu h3, .list_filters h3{
+    font-size: 18px;
+    font-weight: 800;
+    color: #2492ED;
+    margin-right: 30px;
+    width: 100px;
+}
+.category_menu ul{
+    display: flex;
+}
+.category_menu ul li{
+    margin-right: 20px;
+}
+.category_menu ul li a, .list_filters label{
+    color: #34404b;
+    font-weight: 600;
+    font-size: 18px;
+}
+.list_filters{
+    background: #fff;
+    padding: 30px 40px;
+    margin:30px 0 0;
+}
+.list_filters > div{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.list_filters > div:last-child{
+    margin-bottom: 0;
+}
+.list_filters h3{
+    margin-right: 30px;
+}
+.list_filters input{
+    display: none;
+}
+.list_filters .box{
+    width: 13px;
+    height: 13px;
+    background: #edf0f2;
+    text-indent: -9999em;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+.list_filters input:checked + .box{
+    background: #fff;
+    border: 4px solid #2492ED;
+    box-sizing: border-box;
+}
+.list_filters label{
+    margin-right: 12px;
+}
+
+
+
